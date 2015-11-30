@@ -1,0 +1,10 @@
+{% extends "LibraryBundle:Default:layout.html.twig" %}
+
+{% block body %}
+	<h2>Title : {{ book.title }}</h2>
+	<h2>Author : {{ book.author.name }}</h2>
+	<h2>Table of content : {{ book.toc }}</h2>
+	{% if book.isNew == 1 %}
+		Nouveau !
+	{% endif %}
+{% endblock %}

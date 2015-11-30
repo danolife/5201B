@@ -4,6 +4,6 @@
 	<h2>Accueil</h2>
 	<h4>Tous nos livres :</h4>
 	{% for book in books %}
-		{{ book.title }} by {{ book.author.name }} in {{ book.category.name }} <br/>
+		<li><a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }} by {{ book.author.name }}</a></li>
 	{% endfor %}
 {% endblock %}

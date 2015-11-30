@@ -3,6 +3,6 @@
 {% block body %}
 	<h2>Catégorie : {{ category.name }}</h2>
 	{% for book in books %}
-		{{ book.title }} by {{ book.author.name }}<br/>
+		<li><a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }} by {{ book.author.name }}</a></li>
 	{% endfor %}
 {% endblock %}
