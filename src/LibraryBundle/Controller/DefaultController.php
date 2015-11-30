@@ -36,7 +36,12 @@ class DefaultController extends Controller
 
     public function authorAction($slug)
     {
-    	return $this->render('LibraryBundle:Default:author.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Author");
+        $author = $repo->findOneBy(array("slug" => $slug));
+        $books = $author->getBooks();
+
+    	return $this->render('LibraryBundle:Default:author.html.twig', array('author' => $author, 'books' => $books));
     }
 
     public function newsAction()
