@@ -35,6 +35,12 @@ class DefaultController extends Controller
     	return $this->render('LibraryBundle:Default:author.html.twig');
     }
 
+    public function newsAction()
+    {
+        $books = null;
+        return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
+    }
+
     // liste les categories dans le menu
     public function categoriesAction()
     {

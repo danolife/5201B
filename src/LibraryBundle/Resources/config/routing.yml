@@ -13,3 +13,7 @@ library_book:
 library_author: 
     path:   /author/{slug}
     defaults: { _controller: LibraryBundle:Default:author }
+
+library_news:
+    path:    /whatsnew/
+    defaults: { _controller: LibraryBundle:Default:news }

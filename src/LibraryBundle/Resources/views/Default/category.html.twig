@@ -1,7 +1,7 @@
 {% extends "LibraryBundle:Default:layout.html.twig" %}
 
 {% block body %}
-	<h2>{{ category.name }}</h2>
+	<h2>Catégorie : {{ category.name }}</h2>
 	{% for book in books %}
 		{{ book.title }} by {{ book.author.name }}<br/>
 	{% endfor %}
