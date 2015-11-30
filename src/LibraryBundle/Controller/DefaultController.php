@@ -37,7 +37,10 @@ class DefaultController extends Controller
 
     public function newsAction()
     {
-        $books = null;
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Book");
+        $books = $repo->findBy(array('isNew'=>1));
+        
         return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
     }
 
