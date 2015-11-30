@@ -5,5 +5,4 @@
 	{% for book in books %}
 		<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a><br/>
 	{% endfor %}
-	test
 {% endblock %}
