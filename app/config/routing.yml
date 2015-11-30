@@ -1,0 +1,4 @@
+library:
+    resource: "@LibraryBundle/Resources/config/routing.yml"
+    prefix:   /
+
