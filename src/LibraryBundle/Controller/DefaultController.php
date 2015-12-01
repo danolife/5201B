@@ -19,7 +19,7 @@ class DefaultController extends Controller
     {
     	$em = $this->getDoctrine()->getManager();
     	$repo = $em->getRepository("LibraryBundle:Category");
-    	$category = $repo->findOneBy(array("slug" => $slug));
+    	$category = $repo->findOneBySlug($slug);
     	$books = $category->getBooks();
 
     	return $this->render('LibraryBundle:Default:category.html.twig', array('category' => $category, 'books' => $books));
@@ -29,7 +29,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Book");
-        $book = $repo->findOneBy(array("slug" => $slug));
+        $book = $repo->findOneBySlug($slug);
 
     	return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book));
     }
@@ -38,7 +38,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Author");
-        $author = $repo->findOneBy(array("slug" => $slug));
+        $author = $repo->findOneBySlug($slug);
         $books = $author->getBooks();
 
     	return $this->render('LibraryBundle:Default:author.html.twig', array('author' => $author, 'books' => $books));
@@ -48,7 +48,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Book");
-        $books = $repo->findBy(array('isNew'=>1));
+        $books = $repo->findByIsNew(1);
         
         return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
     }
