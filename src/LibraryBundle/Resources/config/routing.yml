@@ -1,0 +1,19 @@
+library_homepage:
+    path:     /
+    defaults: { _controller: LibraryBundle:Default:index }
+
+library_category:
+    path:   /category/{slug}
+    defaults: { _controller: LibraryBundle:Default:category }
+
+library_book:
+    path:   /book/{slug}
+    defaults: { _controller: LibraryBundle:Default:book }
+
+library_author: 
+    path:   /author/{slug}
+    defaults: { _controller: LibraryBundle:Default:author }
+
+library_news:
+    path:    /whatsnew/
+    defaults: { _controller: LibraryBundle:Default:news }

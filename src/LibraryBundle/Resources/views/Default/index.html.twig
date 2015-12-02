@@ -1,0 +1,16 @@
+{% extends "LibraryBundle:Default:layout.html.twig" %}
+
+{% block body %}
+	<h2>Accueil</h2>
+	<h4>Présentation :</h4>
+	<p class="text-justify">
+	 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent massa arcu, varius nec eros sit amet, ultricies luctus orci. Aliquam a sollicitudin odio. Vestibulum feugiat enim ac risus laoreet, id blandit justo molestie. Morbi consectetur porta metus, at cursus nisi ornare eget. Morbi tincidunt, neque vitae fringilla ornare, erat orci fermentum odio, a gravida ligula lacus non dolor. Phasellus sed mauris sed tellus tempus vehicula. Nunc tristique pharetra libero sit amet pretium. Nam tristique, justo molestie pulvinar rhoncus, enim dolor aliquet lacus, quis sodales orci augue vitae nibh. Nulla a hendrerit felis, vitae ultricies dolor. Aenean maximus viverra euismod. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+
+	Pellentesque risus sapien, sodales vitae pretium ac, porttitor ut urna. Maecenas consequat lectus vel blandit iaculis. Cras tincidunt, est sit amet condimentum porta, dolor nisi interdum justo, pharetra aliquet lectus neque at elit. Morbi porttitor tincidunt leo, eget fringilla velit vulputate quis. Duis porta posuere arcu vel hendrerit. Ut vel leo fermentum, imperdiet risus in, iaculis massa. Ut non accumsan magna. Fusce tempor purus diam, sit amet consectetur lacus fermentum at. Maecenas a molestie nulla. 
+	</p>
+	<h4>Tous nos livres :</h4>
+	{% for book in books %}
+		<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a> 
+		{% if book.isNew == 1 %}<span class="label label-default">New</span>{% endif %}
+	{% endfor %}
+{% endblock %}
