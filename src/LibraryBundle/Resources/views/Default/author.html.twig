@@ -3,6 +3,6 @@
 {% block body %}
 	<h2>{{ author.name }}</h2>
 	{% for book in books %}
-		<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a>
+		<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a><br/>
 	{% endfor %}
 {% endblock %}
