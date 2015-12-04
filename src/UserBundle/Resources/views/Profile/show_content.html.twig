@@ -1,6 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="fos_user_user_show">
+    <h1>Profil de l'utilisateur</h1>
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <h3>Tous mes prêts</h3>
+    {% for loan in user.loans %}
+    <p><a href="{{ path('library_book', {'slug': loan.book.slug}) }}">{{ loan.book.title }}</a> depuis le {{ loan.startDate | date("m/d/Y") }}</p>
+    {% endfor %}
+    {% if user.loans is empty %}
+    <p>Aucun prêt</p>
+    {% endif %}
 </div>
