@@ -64,6 +64,12 @@ class Book
     private $category;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="LibraryBundle\Entity\Loan", mappedBy="book")
+     */
+    private $loan;
+
+    /**
      * Get id
      *
      * @return integer
@@ -215,5 +221,29 @@ class Book
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set loan
+     *
+     * @param \LibraryBundle\Entity\Loan $loan
+     *
+     * @return Book
+     */
+    public function setLoan(\LibraryBundle\Entity\Loan $loan)
+    {
+        $this->loan = $loan;
+
+        return $this;
+    }
+
+    /**
+     * Get loan
+     *
+     * @return \LibraryBundle\Entity\Loan
+     */
+    public function getLoan()
+    {
+        return $this->loan;
     }
 }

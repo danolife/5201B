@@ -64,6 +64,13 @@ class Book
     private $category;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="LibraryBundle\Entity\Loan", inversedBy="book")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $loan;
+
+    /**
      * Get id
      *
      * @return integer
@@ -191,5 +198,29 @@ class Book
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \LibraryBundle\Entity\Category $category
+     *
+     * @return Book
+     */
+    public function setCategory(\LibraryBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \LibraryBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

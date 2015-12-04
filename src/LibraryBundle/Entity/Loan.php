@@ -30,10 +30,16 @@ class Loan
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="LibraryBundle\Entity\Book")
+     * @ORM\OneToOne(targetEntity="LibraryBundle\Entity\Book", inversedBy="loan")
      * @ORM\JoinColumn(nullable=false)
      */
     private $book;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="loan")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * Get id
@@ -91,5 +97,29 @@ class Loan
     public function getBook()
     {
         return $this->book;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Loan
+     */
+    public function setUser(\UserBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

@@ -30,11 +30,15 @@ class Loan
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="LibraryBundle\Entity\Book")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="LibraryBundle\Entity\Book", mappedBy="loan")
      */
     private $book;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="loan")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * Get id
@@ -68,5 +72,29 @@ class Loan
     public function getStartDate()
     {
         return $this->startDate;
+    }
+
+    /**
+     * Set book
+     *
+     * @param \LibraryBundle\Entity\Book $book
+     *
+     * @return Loan
+     */
+    public function setBook(\LibraryBundle\Entity\Book $book)
+    {
+        $this->book = $book;
+
+        return $this;
+    }
+
+    /**
+     * Get book
+     *
+     * @return \LibraryBundle\Entity\Book
+     */
+    public function getBook()
+    {
+        return $this->book;
     }
 }

@@ -37,38 +37,5 @@ class User extends BaseUser
     {
         return $this->id;
     }
-
-    /**
-     * Add loan
-     *
-     * @param \LibraryBundle\Entity\Loan $loan
-     *
-     * @return User
-     */
-    public function addLoan(\LibraryBundle\Entity\Loan $loan)
-    {
-        $this->loans[] = $loan;
-
-        return $this;
-    }
-
-    /**
-     * Remove loan
-     *
-     * @param \LibraryBundle\Entity\Loan $loan
-     */
-    public function removeLoan(\LibraryBundle\Entity\Loan $loan)
-    {
-        $this->loans->removeElement($loan);
-    }
-
-    /**
-     * Get loans
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLoans()
-    {
-        return $this->loans;
-    }
 }
+
