@@ -17,3 +17,7 @@ library_author:
 library_news:
     path:    /whatsnew/
     defaults: { _controller: LibraryBundle:Default:news }
+
+library_borrow:
+    path:   /borrow/{slug}
+    defaults: { _controller: LibraryBundle:Default:borrow }

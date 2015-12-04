@@ -36,7 +36,7 @@ class Loan
     private $book;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="loan")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="loans")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
