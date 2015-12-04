@@ -35,7 +35,6 @@ class Loan
      */
     private $book;
 
-
     /**
      * Get id
      *

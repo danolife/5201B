@@ -4,6 +4,7 @@
 	<h2>{{ book.title }} <span class="text-muted">
 	by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a></span></h2>
 	{% if book.isNew == 1 %}<span class="label label-default">New</span>{% endif %}
+	Dans la catégorie {{ book.category.name }}
 	<h3>Table of contents</h3>
 	<div>{{ book.toc }}</div>
 {% endblock %}
