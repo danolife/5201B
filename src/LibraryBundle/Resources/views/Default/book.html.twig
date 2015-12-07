@@ -11,5 +11,5 @@
 	Dans la catégorie <a href="{{ path('library_category', {'slug':book.category.slug}) }}">{{ book.category.name }}</a><br/>
 
 	<h3>Table of contents</h3>
-	<div>{{ book.toc }}</div>
+	<div class="well">{{ book.toc|raw }}</div>
 {% endblock %}

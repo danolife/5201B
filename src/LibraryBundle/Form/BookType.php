@@ -16,7 +16,7 @@ class BookType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('toc')
+            ->add('toc', 'ckeditor')
             ->add('isNew')
             ->add('author')
             ->add('category')
