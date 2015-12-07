@@ -3,7 +3,7 @@
 {% block body %}
 	<h2>
 		Catégorie : {{ category.name }}
-		{% if app.user.hasRole('ROLE_ADMIN') %}
+		{% if app.user and app.user.hasRole('ROLE_ADMIN') %}
 			<a href="{{ path('library_edit_category', {'slug': category.slug}) }}"><i class="fa fa-pencil"></i></a><br/>
 		{% endif %}
 	</h2>
