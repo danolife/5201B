@@ -13,7 +13,7 @@
 		<div class="col-md-3">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<a href="{{ path('library_book', {'slug': book.slug}) }}"><h3 class="panel-title">{{ book.title }} {% if book.isNew == 1 %}<span class="label label-default">New</span>{% endif %}</h3></a>
+					<a href="{{ path('library_book', {'slug': book.slug}) }}"><h3 class="panel-title">{{ book.title }} {% if book.isNew == 1 %}<span class="label label-warning"><i class="fa fa-star"></i> New</span>{% endif %}</h3></a>
 				</div>
 				<div class="panel-body">
 					<ul class="list-unstyled">

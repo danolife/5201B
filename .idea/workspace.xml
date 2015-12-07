@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe214cd0-aaf6-4d8b-bc68-9873ae9cd556" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Entity/Book.php" afterPath="$PROJECT_DIR$/src/LibraryBundle/Entity/Book.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Form/BookType.php" afterPath="$PROJECT_DIR$/src/LibraryBundle/Form/BookType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/category.html.twig" afterPath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/category.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/nouveautes.html.twig" afterPath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/nouveautes.html.twig" />
@@ -32,11 +30,11 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.592592">
-              <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+            <state vertical-scroll-proportion="-3.5925925">
+              <caret line="15" column="225" selection-start-line="15" selection-start-column="225" selection-end-line="15" selection-end-column="225" />
               <folding>
                 <element signature="e#1555#1567#0#Twig" expanded="true" />
-                <element signature="e#1837#1853#0#Twig" expanded="true" />
+                <element signature="e#1864#1880#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,11 +43,11 @@
       <file leaf-file-name="nouveautes.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/nouveautes.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.0">
-              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state vertical-scroll-proportion="-5.3333335">
+              <caret line="8" column="204" selection-start-line="8" selection-start-column="204" selection-end-line="8" selection-end-column="204" />
               <folding>
                 <element signature="e#214#226#0#Twig" expanded="true" />
-                <element signature="e#496#512#0#Twig" expanded="true" />
+                <element signature="e#523#539#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,13 +56,13 @@
       <file leaf-file-name="category.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/category.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5609065">
-              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.713881">
+              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
               <folding>
                 <element signature="e#167#188#0#Twig" expanded="true" />
                 <element signature="e#421#433#0#Twig" expanded="true" />
-                <element signature="e#703#719#0#Twig" expanded="true" />
-                <element signature="e#1116#1132#0#Twig" expanded="true" />
+                <element signature="e#730#746#0#Twig" expanded="true" />
+                <element signature="e#1143#1159#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -759,13 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1024,17 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.592592">
-          <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding>
-            <element signature="e#1555#1567#0#Twig" expanded="true" />
-            <element signature="e#1837#1853#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/categories.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09448819">
@@ -1043,26 +1023,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5925925">
+          <caret line="15" column="225" selection-start-line="15" selection-start-column="225" selection-end-line="15" selection-end-column="225" />
+          <folding>
+            <element signature="e#1555#1567#0#Twig" expanded="true" />
+            <element signature="e#1864#1880#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/nouveautes.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.0">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        <state vertical-scroll-proportion="-5.3333335">
+          <caret line="8" column="204" selection-start-line="8" selection-start-column="204" selection-end-line="8" selection-end-column="204" />
           <folding>
             <element signature="e#214#226#0#Twig" expanded="true" />
-            <element signature="e#496#512#0#Twig" expanded="true" />
+            <element signature="e#523#539#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2647059">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/category.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5609065">
-          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.713881">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
           <folding>
             <element signature="e#167#188#0#Twig" expanded="true" />
             <element signature="e#421#433#0#Twig" expanded="true" />
-            <element signature="e#703#719#0#Twig" expanded="true" />
-            <element signature="e#1116#1132#0#Twig" expanded="true" />
+            <element signature="e#730#746#0#Twig" expanded="true" />
+            <element signature="e#1143#1159#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
