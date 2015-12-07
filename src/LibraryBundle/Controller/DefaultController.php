@@ -135,6 +135,17 @@ class DefaultController extends Controller
         return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
     }
 
+    public function removeBookAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Book");
+        $book = $repo->findOneBySlug($slug);
+        $em->remove($book);
+        $em->flush();
+
+        return $this->redirectToRoute('library_homepage');
+    }
+
     // liste les categories dans le menu
     public function categoriesAction()
     {

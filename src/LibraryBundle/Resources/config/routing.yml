@@ -34,6 +34,10 @@ library_edit_book:
     path:   /admin/edit/book/{slug}
     defaults: { _controller: LibraryBundle:Default:editBook }
 
+library_remove_book:
+    path:   /admin/remove/book/{slug}
+    defaults: { _controller: LibraryBundle:Default:removeBook }
+
 library_add_author:
     path:   /admin/add/author
     defaults: { _controller: LibraryBundle:Default:addAuthor }
