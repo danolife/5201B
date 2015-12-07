@@ -1,10 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <ul>
-        <li><a href="{{ path('library_add_book') }}">Ajouter un livre</a></li>
-        <li><a href="{{ path('library_add_author') }}">Ajouter un auteur</a></li>
-        <li><a href="{{ path('library_add_category') }}">Ajouter une catégorie</a></li>
-    </ul>
+
+    <div class="jumbotron">
+        <h1>Espace admin</h1>
+        <p>Bienvenue dans votre espace administrateur !</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="{{ path('library_add_book') }}"><i class="fa fa-book"></i> Ajouter un livre</a>
+            <a class="btn btn-primary btn-lg" href="{{ path('library_add_author') }}"><i class="fa fa-user"></i> Ajouter un auteur</a>
+            <a class="btn btn-primary btn-lg" href="{{ path('library_add_category') }}"><i class="fa fa-list"></i> Ajouter une catégorie</a>
+        </p>
+    </div>
+
 {% endblock %}
 

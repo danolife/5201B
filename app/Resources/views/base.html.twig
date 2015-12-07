@@ -44,7 +44,7 @@
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         {% if app.user.hasRole('ROLE_ADMIN') %}
                             <li>
-                                <a href="{{ path('library_admin') }}">Espace admin</a>
+                                <a href="{{ path('library_admin') }}"><i class="fa fa-terminal"></i> Espace admin</a>
                             </li>
                         {% endif %}
                         <li>
