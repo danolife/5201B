@@ -37,7 +37,7 @@ class Author
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="LibraryBundle\Entity\Book", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="LibraryBundle\Entity\Book", mappedBy="author", cascade={"remove"})
      */
     private $books;
 

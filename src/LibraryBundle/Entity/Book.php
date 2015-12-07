@@ -67,7 +67,7 @@ class Book
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="LibraryBundle\Entity\Loan", mappedBy="book")
+     * @ORM\OneToOne(targetEntity="LibraryBundle\Entity\Loan", mappedBy="book", cascade={"remove"})
      */
     private $loan;
 

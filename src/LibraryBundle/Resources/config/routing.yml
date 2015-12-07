@@ -46,6 +46,10 @@ library_edit_author:
     path:   /admin/edit/author/{slug}
     defaults: { _controller: LibraryBundle:Default:editAuthor }
 
+library_remove_author:
+    path:   /admin/remove/author/{slug}
+    defaults: { _controller: LibraryBundle:Default:removeAuthor }
+
 library_add_category:
     path:   /admin/add/category
     defaults: { _controller: LibraryBundle:Default:addCategory }

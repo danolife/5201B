@@ -36,7 +36,7 @@ class Category
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="LibraryBundle\Entity\Book", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="LibraryBundle\Entity\Book", mappedBy="category", cascade={"remove"})
      */
     private $books;
 
