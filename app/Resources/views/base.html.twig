@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Library</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 </head>
 <body style="padding-top: 70px;">
@@ -41,6 +42,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if app.user.hasRole('ROLE_ADMIN') %}
+                            <li>
+                                <a href="{{ path('library_admin') }}">Espace admin</a>
+                            </li>
+                        {% endif %}
                         <li>
                             <a href="{{ path('fos_user_profile_show') }}">
                                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}

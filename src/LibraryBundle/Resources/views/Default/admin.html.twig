@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <ul>
+        <li><a href="{{ path('library_add_book') }}">Ajouter un livre</a></li>
+        <li><a href="{{ path('library_add_author') }}">Ajouter un auteur</a></li>
+        <li><a href="{{ path('library_add_category') }}">Ajouter une catégorie</a></li>
+    </ul>
+{% endblock %}
+

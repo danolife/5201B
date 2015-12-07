@@ -21,3 +21,31 @@ library_news:
 library_borrow:
     path:   /borrow/{slug}
     defaults: { _controller: LibraryBundle:Default:borrow }
+
+library_admin:
+    path: /admin
+    defaults: { _controller: LibraryBundle:Default:admin}
+
+library_add_book:
+    path:   /admin/add/book
+    defaults: { _controller: LibraryBundle:Default:addBook }
+
+library_edit_book:
+    path:   /admin/edit/book/{slug}
+    defaults: { _controller: LibraryBundle:Default:editBook }
+
+library_add_author:
+    path:   /admin/add/author
+    defaults: { _controller: LibraryBundle:Default:addAuthor }
+
+library_edit_author:
+    path:   /admin/edit/author/{slug}
+    defaults: { _controller: LibraryBundle:Default:editAuthor }
+
+library_add_category:
+    path:   /admin/add/category
+    defaults: { _controller: LibraryBundle:Default:addCategory }
+
+library_edit_category:
+    path:   /admin/edit/category/{slug}
+    defaults: { _controller: LibraryBundle:Default:editCategory }

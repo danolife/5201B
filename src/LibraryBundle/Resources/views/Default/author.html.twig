@@ -1,7 +1,12 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-	<h2>{{ author.name }}</h2>
+	<h2>
+		{{ author.name }}
+		{% if app.user.hasRole('ROLE_ADMIN') %}
+			<a href="{{ path('library_edit_author', {'slug': author.slug}) }}"><i class="fa fa-pencil"></i></a><br/>
+		{% endif %}
+	</h2>
 	{% for book in books %}
 		<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a><br/>
 	{% endfor %}

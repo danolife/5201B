@@ -1,8 +1,14 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-	<h2>Catégorie : {{ category.name }}</h2>
+	<h2>
+		Catégorie : {{ category.name }}
+		{% if app.user.hasRole('ROLE_ADMIN') %}
+			<a href="{{ path('library_edit_category', {'slug': category.slug}) }}"><i class="fa fa-pencil"></i></a><br/>
+		{% endif %}
+	</h2>
 	{% for book in books %}
 		<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a><br/>
 	{% endfor %}
+
 {% endblock %}
