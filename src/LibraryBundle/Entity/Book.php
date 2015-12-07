@@ -4,6 +4,7 @@ namespace LibraryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Book
@@ -33,6 +34,7 @@ class Book
      * @var string
      *
      * @ORM\Column(name="toc", type="text")
+     * @Assert\NotBlank()
      */
     private $toc;
 

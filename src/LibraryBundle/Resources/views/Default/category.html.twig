@@ -8,7 +8,24 @@
 		{% endif %}
 	</h2>
 	{% for book in books %}
-		<a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a><br/>
+		<div class="col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="{{ path('library_book', {'slug': book.slug}) }}"><h3 class="panel-title">{{ book.title }} {% if book.isNew == 1 %}<span class="label label-default">New</span>{% endif %}</h3></a>
+				</div>
+				<div class="panel-body">
+					<ul class="list-unstyled">
+						<li>Categorie : <a href="{{ path('library_category', {'slug': book.category.slug}) }}">{{ book.category.name }}</a></li>
+						<li>Auteur : <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		Cette catégorie ne comporte aucun livre.<br/>
+		{% if app.user and app.user.hasRole('ROLE_ADMIN') %}
+			<a class="btn btn-primary btn-lg" href="{{ path('library_add_book') }}"><i class="fa fa-book"></i> Ajoutez-en un !</a>
+		{% endif %}
 	{% endfor %}
 
 {% endblock %}
