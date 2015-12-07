@@ -2,7 +2,7 @@
 
 {% block body %}
 	<h2>{{ book.title }} <span class="text-muted">
-		{% if app.user and app.user.hasRole('ROLE_ADMIN') %}
+		{% if role_admin %}
 			<a href="{{ path('library_edit_book', {'slug': book.slug}) }}"><i class="fa fa-pencil"></i></a><br/>
 		{% endif %}
 		by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a></span>

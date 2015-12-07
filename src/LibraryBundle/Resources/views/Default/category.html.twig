@@ -23,7 +23,7 @@
 		</div>
 	{% else %}
 		Cette catégorie ne comporte aucun livre.<br/>
-		{% if app.user and app.user.hasRole('ROLE_ADMIN') %}
+		{% if role_admin %}
 			<a class="btn btn-primary btn-lg" href="{{ path('library_add_book') }}"><i class="fa fa-book"></i> Ajoutez-en un !</a>
 		{% endif %}
 	{% endfor %}

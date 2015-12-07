@@ -3,7 +3,7 @@
 {% block body %}
 	<h2>
 		{{ author.name }}
-		{% if app.user and app.user.hasRole('ROLE_ADMIN') %}
+		{% if role_admin %}
 			<a href="{{ path('library_edit_author', {'slug': author.slug}) }}"><i class="fa fa-pencil"></i></a><br/>
 		{% endif %}
 	</h2>
