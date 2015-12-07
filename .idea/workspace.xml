@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fe214cd0-aaf6-4d8b-bc68-9873ae9cd556" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/author.html.twig" afterPath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/author.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/book.html.twig" afterPath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/book.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/category.html.twig" afterPath="$PROJECT_DIR$/src/LibraryBundle/Resources/views/Default/category.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="5201B.iws" />
