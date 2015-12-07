@@ -57,3 +57,7 @@ library_add_category:
 library_edit_category:
     path:   /admin/edit/category/{slug}
     defaults: { _controller: LibraryBundle:Default:editCategory }
+
+library_remove_category:
+    path:   /admin/remove/category/{slug}
+    defaults: { _controller: LibraryBundle:Default:removeCategory }

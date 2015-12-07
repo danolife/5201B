@@ -157,6 +157,17 @@ class DefaultController extends Controller
         return $this->redirectToRoute('library_homepage');
     }
 
+    public function removeCategoryAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Category");
+        $category = $repo->findOneBySlug($slug);
+        $em->remove($category);
+        $em->flush();
+
+        return $this->redirectToRoute('library_homepage');
+    }
+
     // liste les categories dans le menu
     public function categoriesAction()
     {
