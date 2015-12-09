@@ -1,4 +1,4 @@
-<form action="{{ path('library_remove_author', {'slug': author.slug}) }}" method="post">
-	<button type="submit" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouoir supprimer cet auteur et tous les livres et prêts associés ? ?')"><i class="fa fa-minus-circle text-danger"></i></button>
+<form action="{{ path('library_remove_author', {'slug': slug}) }}" method="post">
+	<button type="submit" class="btn btn-danger" onclick="return confirm('Etes vous sûr de vouoir supprimer cet auteur et tous les livres et prêts associés ? ?')"><i class="fa fa-minus-circle"></i> Supprimer cet auteur</button>
 	{{ form_rest(form) }}
 </form>

@@ -137,7 +137,7 @@ class DefaultController extends Controller
         return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
     }
 
-    public function removeAuthorAction($slug)
+    public function removeAuthorAction(Request $request, $slug)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Author");
