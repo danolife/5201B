@@ -6,6 +6,7 @@
 		{% if app.user and app.user.hasRole('ROLE_ADMIN') %}
 			<a href="{{ path('library_edit_category', {'slug': category.slug}) }}"><i class="fa fa-pencil"></i></a>
 			<a href="{{ path('library_remove_category', {'slug': category.slug}) }}" onclick="return confirm('Etes vous sûr de vouoir supprimer cette catégorie et tous les livres et prêts associés ?')"><i class="fa fa-minus-circle text-danger"></i></a><br/>
+
 		{% endif %}
 	</h2>
 	{% for book in books %}
@@ -16,7 +17,7 @@
 				</div>
 				<div class="panel-body">
 					<ul class="list-unstyled">
-						<li>Categorie : <a href="{{ path('library_category', {'slug': book.category.slug}) }}">{{ book.category.name }}</a></li>
+						<li>Catégorie : <a href="{{ path('library_category', {'slug': book.category.slug}) }}">{{ book.category.name }}</a></li>
 						<li>Auteur : <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a></li>
 					</ul>
 				</div>

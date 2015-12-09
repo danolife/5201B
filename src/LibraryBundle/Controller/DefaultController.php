@@ -11,6 +11,8 @@ use LibraryBundle\Form\BookType;
 use LibraryBundle\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class DefaultController extends Controller
 {
@@ -146,15 +148,26 @@ class DefaultController extends Controller
         return $this->redirectToRoute('library_homepage');
     }
 
-    public function removeBookAction($slug)
+    public function removeBookAction(Request $request, $slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository("LibraryBundle:Book");
-        $book = $repo->findOneBySlug($slug);
-        $em->remove($book);
-        $em->flush();
+        $book = $em->getRepository("LibraryBundle:Book")->findOneBySlug($slug);
 
-        return $this->redirectToRoute('library_homepage');
+        if (null === $book) {
+            throw new NotFoundHttpException("Ce livre n'existe pas");
+        }
+
+        $form = $this->createFormBuilder()->getForm();
+        if ($form->handleRequest($request)->isValid()) {
+            $em->remove($book);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('info', "Le livre a bien été supprimé.");
+
+            return $this->redirectToRoute('library_homepage');
+        }
+
+        return $this->render('LibraryBundle:Default:removeBook.html.twig', array('slug' => $slug, 'form' => $form->createView()));
     }
 
     public function removeCategoryAction($slug)
