@@ -5,7 +5,7 @@
 		{{ author.name }}
 		{% if role_admin %}
 			<a href="{{ path('library_edit_author', {'slug': author.slug}) }}"><i class="fa fa-pencil"></i></a>
-			<a href="{{ path('library_remove_author', {'slug': author.slug}) }}" onclick="return confirm('Etes vous sûr de vouoir supprimer cet auteur et tous les livres et prêts associés ?')"><i class="fa fa-minus-circle text-danger"></i></a><br/>
+			{{ render(controller('LibraryBundle:Default:removeAuthor', {'slug': author.slug })) }}
 		{% endif %}
 	</h2>
 	{% for book in books %}

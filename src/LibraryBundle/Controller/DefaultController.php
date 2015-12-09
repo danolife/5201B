@@ -142,10 +142,19 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Author");
         $author = $repo->findOneBySlug($slug);
-        $em->remove($author);
-        $em->flush();
 
-        return $this->redirectToRoute('library_homepage');
+        if (null === $author) {
+            throw new NotFoundHttpException("Cet auteur n'existe pas");
+        }
+
+        $form = $this->createFormBuilder()->getForm();
+        if ($form->handleRequest($request)->isValid()) {
+            $em->remove($author);
+            $em->flush();
+            return $this->redirectToRoute('library_homepage');
+        }
+
+        return $this->render('LibraryBundle:Default:removeAuthor.html.twig', array('slug' => $slug, 'form' => $form->createView()));
     }
 
     public function removeBookAction(Request $request, $slug)
