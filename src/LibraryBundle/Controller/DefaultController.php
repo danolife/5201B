@@ -25,14 +25,32 @@ class DefaultController extends Controller
         return $this->render('LibraryBundle:Default:index.html.twig', array('books' => $books));
     }
 
-    public function categoryAction($slug)
+    public function authorAction($slug)
     {
-    	$em = $this->getDoctrine()->getManager();
-    	$repo = $em->getRepository("LibraryBundle:Category");
-    	$category = $repo->findOneBySlug($slug);
-    	$books = $category->getBooks();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Author");
+        $author = $repo->findOneBySlug($slug);
+        $books = $author->getBooks();
 
-    	return $this->render('LibraryBundle:Default:category.html.twig', array('category' => $category, 'books' => $books));
+        return $this->render('LibraryBundle:Default:author.html.twig', array('author' => $author, 'books' => $books));
+    }
+
+    public function addAuthorAction(Request $request)
+    {
+        $author = new Author();
+        $form = $this->get('form.factory')->create(new AuthorType(), $author);
+
+        if($form->handleRequest($request)->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($author);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Auteur bien ajouté');
+
+            return $this->redirect($this->generateUrl('library_author', array('slug'=>$author->getSlug())));
+        }
+
+        return $this->render('LibraryBundle:Default:addAuthor.html.twig', array('form'=>$form->createView()));
     }
 
     public function editAuthorAction(Request $request, $slug)
@@ -53,6 +71,48 @@ class DefaultController extends Controller
         }
 
         return $this->render('LibraryBundle:Default:addAuthor.html.twig', array('form'=>$form->createView()));
+    }
+
+    public function bookAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Book");
+        $book = $repo->findOneBySlug($slug);
+
+        return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book));
+    }
+
+    public function categoryAction($slug)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$repo = $em->getRepository("LibraryBundle:Category");
+    	$category = $repo->findOneBySlug($slug);
+    	$books = $category->getBooks();
+
+    	return $this->render('LibraryBundle:Default:category.html.twig', array('category' => $category, 'books' => $books));
+    }
+
+    public function borrowAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Book");
+        $book = $repo->findOneBySlug($slug);
+        $loan = new Loan();
+        $loan->setBook($book);
+        $loan->setUser($this->getUser());
+        $loan->setStartDate(new \DateTime());
+        $em->persist($loan);
+        $em->flush();
+        return $this->redirectToRoute('library_book', array('slug' => $slug));
+    }
+
+    public function newsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Book");
+        $books = $repo->findByIsNew(1);
+
+        return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
     }
 
     public function editBookAction(Request $request, $slug)
@@ -93,48 +153,6 @@ class DefaultController extends Controller
         }
 
         return $this->render('LibraryBundle:Default:addCategory.html.twig', array('form'=>$form->createView()));
-    }
-
-    public function bookAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository("LibraryBundle:Book");
-        $book = $repo->findOneBySlug($slug);
-
-    	return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book));
-    }
-
-    public function borrowAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository("LibraryBundle:Book");
-        $book = $repo->findOneBySlug($slug);
-        $loan = new Loan();
-        $loan->setBook($book);
-        $loan->setUser($this->getUser());
-        $loan->setStartDate(new \DateTime());
-        $em->persist($loan);
-        $em->flush();
-        return $this->redirectToRoute('library_book', array('slug' => $slug));
-    }
-
-    public function authorAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository("LibraryBundle:Author");
-        $author = $repo->findOneBySlug($slug);
-        $books = $author->getBooks();
-
-    	return $this->render('LibraryBundle:Default:author.html.twig', array('author' => $author, 'books' => $books));
-    }
-
-    public function newsAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository("LibraryBundle:Book");
-        $books = $repo->findByIsNew(1);
-        
-        return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
     }
 
     public function removeAuthorAction($slug)
@@ -230,25 +248,6 @@ class DefaultController extends Controller
     public function adminAction()
     {
         return $this->render('LibraryBundle:Default:admin.html.twig');
-    }
-
-
-    public function addAuthorAction(Request $request)
-    {
-        $author = new Author();
-        $form = $this->get('form.factory')->create(new AuthorType(), $author);
-
-        if($form->handleRequest($request)->isValid()){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($author);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->add('notice', 'Auteur bien ajouté');
-
-            return $this->redirect($this->generateUrl('library_author', array('slug'=>$author->getSlug())));
-        }
-
-        return $this->render('LibraryBundle:Default:addAuthor.html.twig', array('form'=>$form->createView()));
     }
 
 }

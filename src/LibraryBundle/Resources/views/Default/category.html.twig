@@ -5,7 +5,8 @@
 		Catégorie : {{ category.name }}
 		{% if app.user and app.user.hasRole('ROLE_ADMIN') %}
 			<a href="{{ path('library_edit_category', {'slug': category.slug}) }}"><i class="fa fa-pencil"></i></a>
-			<a href="{{ path('library_remove_category', {'slug': category.slug}) }}" onclick="return confirm('Etes vous sûr de vouoir supprimer cette catégorie et tous les livres et prêts associés ?')"><i class="fa fa-minus-circle text-danger"></i></a><br/>
+
+			{#<a href="{{ path('library_remove_category', {'slug': category.slug}) }}" onclick="return confirm('Etes vous sûr de vouoir supprimer cette catégorie et tous les livres et prêts associés ?')"><i class="fa fa-minus-circle text-danger"></i></a><br/>#}
 
 		{% endif %}
 	</h2>
