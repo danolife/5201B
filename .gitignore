@@ -11,3 +11,4 @@
 /app/logs/*
 !app/logs/.gitkeep
 /app/phpunit.xml
+.idea/workspace.xml
