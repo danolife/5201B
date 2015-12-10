@@ -44,6 +44,11 @@
                         <a href="{{ path('library_news') }}">Nouveautés</a>
                     </li>
                 </ul>
+                {% if app.session.get('cart') and app.session.get('cart').size > 0 %}
+
+                        <a href="{{ path('library_show_cart') }}" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i> Voir panier <span class="badge">{{ app.session.get('cart').size }}</span></a>
+
+                {% endif %}
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         {% if app.user.hasRole('ROLE_ADMIN') %}

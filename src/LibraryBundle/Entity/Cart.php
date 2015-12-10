@@ -27,14 +27,14 @@ class Cart
         return $this->books;
     }
 
-    public function addBook(Book $book)
+    public function addBook($book)
     {
         $this->books[] = $book;
 
         return $this;
     }
 
-    public function removeBook(Book $book)
+    public function removeBook($book)
     {
         $this->books->removeElement($book);
     }

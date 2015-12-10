@@ -2,6 +2,7 @@
 
 namespace LibraryBundle\Controller;
 
+use LibraryBundle\Entity\Cart;
 use LibraryBundle\Entity\Category;
 use LibraryBundle\Entity\Author;
 use LibraryBundle\Entity\Book;
@@ -97,12 +98,16 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Book");
         $book = $repo->findOneBySlug($slug);
-        $loan = new Loan();
-        $loan->setBook($book);
-        $loan->setUser($this->getUser());
-        $loan->setStartDate(new \DateTime());
-        $em->persist($loan);
-        $em->flush();
+        if(!$this->get('session')->has('cart'))
+        {
+            $cart = new Cart();
+            $this->get('session')->set('cart',$cart);
+        }
+        else
+        {
+            $cart = $this->get('session')->get('cart');
+        }
+        $cart->addBook($slug);
         return $this->redirectToRoute('library_book', array('slug' => $slug));
     }
 
@@ -206,6 +211,20 @@ class DefaultController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('library_homepage');
+    }
+
+    public function showCartAction()
+    {
+        $cart = $this->get('session')->get('cart');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Book");
+        $books = array();
+
+        foreach ($cart->getBooks() as $slug) {
+            $book = $repo->findOneBySlug($slug);
+            $books[] = $book;
+        }
+        return $this->render('LibraryBundle:Default:showCart.html.twig', array('books' => $books));
     }
 
     // liste les categories dans le menu
