@@ -3,7 +3,7 @@
 {% block body %}
 	<h2>{{ book.title }} <span class="text-muted">
 		{% if role_admin %}
-			<a href="{{ path('library_edit_book', {'slug': book.slug}) }}"><i class="fa fa-pencil"></i></a><br/>
+			<a data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('library_edit_book', {'slug': book.slug}) }}"><i class="fa fa-pencil"></i></a>{{ render(controller('LibraryBundle:Book:removeBook', {'slug': book.slug })) }}<br/>
 		{% endif %}
 		by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a></span>
 	</h2>
@@ -23,7 +23,7 @@
 				</p>
 			</div>
 			{% if role_admin %}
-				{{ render(controller('LibraryBundle:Default:removeBook', {'slug': book.slug })) }}
+
 			{% endif %}
 		</div>
 		<div class="col-md-3">

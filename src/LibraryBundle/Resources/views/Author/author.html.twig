@@ -5,7 +5,7 @@
 		{{ author.name }}
 		{% if role_admin %}
 			<a href="{{ path('library_edit_author', {'slug': author.slug}) }}"><i class="fa fa-pencil"></i></a>
-			{{ render(controller('LibraryBundle:Default:removeAuthor', {'slug': author.slug })) }}
+			{{ render(controller('LibraryBundle:Author:removeAuthor', {'slug': author.slug })) }}
 		{% endif %}
 	</h2>
 	{% for book in books %}
