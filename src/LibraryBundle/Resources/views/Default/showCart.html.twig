@@ -2,11 +2,14 @@
 
 {% block body %}
     <h3><i class="fa fa-shopping-cart"></i> Mon panier</h3>
+
     {% for book in books %}
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> {% if book.isNew == 1 %}<span class="label label-warning"><i class="fa fa-star"></i> New</span>{% endif %}</h3>
+                    <h3 class="panel-title">
+                        <a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> {% if book.isNew == 1 %}<span class="label label-warning"><i class="fa fa-star"></i> New</span>{% endif %}
+                        <a class="pull-right text-danger" data-toggle="tooltip" data-placement="top" title="Retirer du panier" href="{{ path('library_remove_cart', {'slug': book.slug}) }}"><i class="fa fa-trash"></i></a></h3>
                 </div>
                 <div class="panel-body">
                     <ul class="list-unstyled">
@@ -16,6 +19,19 @@
                 </div>
             </div>
         </div>
+    {% else %}
+        <div class="jumbotron">
+            <h1><i class="fa fa-meh-o"></i> Votre panier est vide...</h1>
+            <p><a class="btn btn-primary btn-lg" href="{{ path('library_homepage') }}" role="button"><i class="fa fa-home"></i> Retour à l'accueil</a></p>
+        </div>
     {% endfor %}
 {% endblock %}
 
+{% block js %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+{% endblock %}

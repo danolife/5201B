@@ -79,8 +79,12 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Book");
         $book = $repo->findOneBySlug($slug);
-
-        return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book));
+        $bookInCart = false;
+        if($this->get('session')->has('cart') && $this->get('session')->get('cart')->getBooks()->contains($slug))
+        {
+            $bookInCart = true;
+        }
+        return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book, 'bookInCart' => $bookInCart));
     }
 
     public function categoryAction($slug)
@@ -200,6 +204,12 @@ class DefaultController extends Controller
         }
 
         return $this->render('LibraryBundle:Default:removeBook.html.twig', array('slug' => $slug, 'form' => $form->createView()));
+    }
+
+    public function removeCartAction($slug)
+    {
+        $this->get('session')->get('cart')->removeBook($slug);
+        return $this->redirectToRoute('library_show_cart');
     }
 
     public function removeCategoryAction($slug)

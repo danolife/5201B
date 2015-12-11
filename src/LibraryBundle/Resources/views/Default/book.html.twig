@@ -29,8 +29,10 @@
 		<div class="col-md-3">
 			<div class="well">
 				<h3>Action</h3>
-				{% if app.user %}
+				{% if role_user and not bookInCart %}
 					<a href="{{ path('library_borrow', {'slug': book.slug}) }}" class="btn btn-primary"><i class="fa fa-cart-plus"></i> Ajouter au panier</a>
+				{% elseif role_user and bookInCart %}
+					Ce livre se trouve déjà dans votre panier
 				{% else %}
 					<a href="{{ path('fos_user_security_login') }}">Vous devez vous connecter pour continuer</a>
 				{% endif %}
