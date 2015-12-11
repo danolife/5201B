@@ -46,7 +46,7 @@ class Loan
      *
      * @ORM\Column(name="onGoing", type="boolean")
      */
-    private $onGoing = true;
+    private $onGoing;
 
     /**
      * Get id
@@ -128,29 +128,5 @@ class Loan
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set onGoing
-     *
-     * @param boolean $onGoing
-     *
-     * @return Loan
-     */
-    public function setOnGoing($onGoing)
-    {
-        $this->onGoing = $onGoing;
-
-        return $this;
-    }
-
-    /**
-     * Get onGoing
-     *
-     * @return boolean
-     */
-    public function getOnGoing()
-    {
-        return $this->onGoing;
     }
 }

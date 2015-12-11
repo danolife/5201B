@@ -5,10 +5,27 @@
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
     <h3>Tous mes prêts</h3>
-    {% for loan in user.loans %}
-    <p><a href="{{ path('library_book', {'slug': loan.book.slug}) }}">{{ loan.book.title }}</a> depuis le {{ loan.startDate | date("d/m/Y") }}</p>
+    {% for loan in user.loans|reverse %}
+        {% if loop.first %}
+            <table class="table table-striped table-hover table-bordered">
+                <tr>
+                    <th>Titre</th>
+                    <th>Date d'emprunt</th>
+                    <th>Rendu</th>
+                    <th>Action</th>
+                </tr>
+        {% endif %}
+        <tr>
+            <td><a href="{{ path('library_book', {'slug': loan.book.slug}) }}">{{ loan.book.title }}</a></td>
+            <td>{{ loan.startDate | date("d/m/Y") }}</td>
+            <td>{% if loan.onGoing  %} <span class="label label-danger">Non</span>{% else %} <span class="label label-success">Oui</span>{% endif %}</td>
+            <td><a href="{{ path('library_return', {'slug': loan.book.slug}) }}" class="btn btn-primary"><i class="fa fa-level-down"></i> Rendre</a></td>
+        </tr>
+        {% if loop.last %}
+            </table>
+        {% endif %}
     {% endfor %}
     {% if user.loans is empty %}
-    <p>Aucun prêt</p>
+        <p>Aucun prêt</p>
     {% endif %}
 </div>

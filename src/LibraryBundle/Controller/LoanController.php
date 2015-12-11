@@ -21,6 +21,18 @@ class LoanController extends Controller
             $em->persist($loan);
         }
         $em->flush();
+        $this->get('session')->remove('cart');
+        return $this->redirectToRoute('fos_user_profile_show');
+    }
+
+    public function returnAction($slug)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $bookRepo = $em->getRepository('LibraryBundle:Book');
+        $book = $bookRepo->findOneBySlug($slug);
+        $book->getLoan()->setOnGoing(false);
+        $em->flush();
+
         return $this->redirectToRoute('fos_user_profile_show');
     }
 }
