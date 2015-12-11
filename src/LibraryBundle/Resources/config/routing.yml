@@ -69,3 +69,7 @@ library_show_cart:
 library_remove_cart:
     path:   /cart/remove/{slug}
     defaults: { _controller: LibraryBundle:Cart:removeFromCart }
+
+library_checkout:
+    path:   /cart/checkout
+    defaults: { _controller: LibraryBundle:Loan:checkout }

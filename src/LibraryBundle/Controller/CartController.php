@@ -41,4 +41,6 @@ class CartController extends Controller
         $cart->addBook($slug);
         return $this->redirectToRoute('library_book', array('slug' => $slug));
     }
+
+
 }

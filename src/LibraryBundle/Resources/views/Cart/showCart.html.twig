@@ -5,7 +5,7 @@
 
     {% for book in books %}
         {% if loop.last %}
-            <div class="well">
+        <div class="well">
             <div class="container">
 
         {% endif %}
@@ -25,11 +25,9 @@
             </div>
         </div>
         {% if loop.last %}
-            {#<div style="clear: both"></div>#}
-
             </div>
-            </div>
-            <a class="btn btn-primary btn-block" href="#"><i class="fa fa-check"></i> Passer commande</a>
+        </div>
+            <a class="btn btn-primary btn-block" href="{{ path('library_checkout') }}"><i class="fa fa-check"></i> Passer commande</a>
         {% endif %}
     {% else %}
         <div class="jumbotron">

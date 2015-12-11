@@ -248,4 +248,10 @@ class Book
     {
         return $this->loan;
     }
+
+    public function isBorrowed()
+    {
+        $loan = $this->getLoan();
+        return isset($loan);
+    }
 }
