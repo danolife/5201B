@@ -1,0 +1,5 @@
+<form action="{{ path('library_remove_book', {'slug': slug }) }}" method="post" style="display: inline-block">
+    <button data-toggle="tooltip" data-placement="top" title="Supprimer" type="submit" class="btn-link" onclick="return confirm('Etes vous sûr de vouoir supprimer ce livre ?')"><i class='text-danger fa fa-trash'></i></button>
+    {{ form_rest(form) }}
+</form>
+
