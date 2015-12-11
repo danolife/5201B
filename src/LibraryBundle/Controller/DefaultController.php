@@ -2,6 +2,7 @@
 
 namespace LibraryBundle\Controller;
 
+use LibraryBundle\Entity\Cart;
 use LibraryBundle\Entity\Category;
 use LibraryBundle\Entity\Author;
 use LibraryBundle\Entity\Book;
@@ -78,8 +79,12 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Book");
         $book = $repo->findOneBySlug($slug);
-
-        return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book));
+        $bookInCart = false;
+        if($this->get('session')->has('cart') && $this->get('session')->get('cart')->getBooks()->contains($slug))
+        {
+            $bookInCart = true;
+        }
+        return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book, 'bookInCart' => $bookInCart));
     }
 
     public function categoryAction($slug)
@@ -97,12 +102,16 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Book");
         $book = $repo->findOneBySlug($slug);
-        $loan = new Loan();
-        $loan->setBook($book);
-        $loan->setUser($this->getUser());
-        $loan->setStartDate(new \DateTime());
-        $em->persist($loan);
-        $em->flush();
+        if(!$this->get('session')->has('cart'))
+        {
+            $cart = new Cart();
+            $this->get('session')->set('cart',$cart);
+        }
+        else
+        {
+            $cart = $this->get('session')->get('cart');
+        }
+        $cart->addBook($slug);
         return $this->redirectToRoute('library_book', array('slug' => $slug));
     }
 
@@ -197,6 +206,12 @@ class DefaultController extends Controller
         return $this->render('LibraryBundle:Default:removeBook.html.twig', array('slug' => $slug, 'form' => $form->createView()));
     }
 
+    public function removeCartAction($slug)
+    {
+        $this->get('session')->get('cart')->removeBook($slug);
+        return $this->redirectToRoute('library_show_cart');
+    }
+
     public function removeCategoryAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
@@ -206,6 +221,20 @@ class DefaultController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('library_homepage');
+    }
+
+    public function showCartAction()
+    {
+        $cart = $this->get('session')->get('cart');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("LibraryBundle:Book");
+        $books = array();
+
+        foreach ($cart->getBooks() as $slug) {
+            $book = $repo->findOneBySlug($slug);
+            $books[] = $book;
+        }
+        return $this->render('LibraryBundle:Default:showCart.html.twig', array('books' => $books));
     }
 
     // liste les categories dans le menu

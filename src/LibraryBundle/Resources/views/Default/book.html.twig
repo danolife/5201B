@@ -7,12 +7,37 @@
 		{% endif %}
 		by <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a></span>
 	</h2>
-	{% if book.isNew == 1 %}<span class="label label-default">New</span>{% endif %}
-	Dans la catégorie <a href="{{ path('library_category', {'slug':book.category.slug}) }}">{{ book.category.name }}</a><br/>
 
-	<h3>Table of contents</h3>
-	<div class="well">{{ book.toc|raw }}</div>
-	{% if role_admin %}
-		{{ render(controller('LibraryBundle:Default:removeBook', {'slug': book.slug })) }}
-	{% endif %}
+	<div class="row">
+		<div class="col-md-12">
+			{% if book.isNew == 1 %}<span class="label label-default">New</span>{% endif %}
+			Dans la catégorie <a href="{{ path('library_category', {'slug':book.category.slug}) }}">{{ book.category.name }}</a><br/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9">
+			<div class="well">
+				<h3>Table of contents</h3>
+				<p>
+					{{ book.toc|raw }}
+				</p>
+			</div>
+			{% if role_admin %}
+				{{ render(controller('LibraryBundle:Default:removeBook', {'slug': book.slug })) }}
+			{% endif %}
+		</div>
+		<div class="col-md-3">
+			<div class="well">
+				<h3>Action</h3>
+				{% if role_user and not bookInCart %}
+					<a href="{{ path('library_borrow', {'slug': book.slug}) }}" class="btn btn-primary"><i class="fa fa-cart-plus"></i> Ajouter au panier</a>
+				{% elseif role_user and bookInCart %}
+					Ce livre se trouve déjà dans votre panier
+				{% else %}
+					<a href="{{ path('fos_user_security_login') }}">Vous devez vous connecter pour continuer</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
 {% endblock %}

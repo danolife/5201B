@@ -61,3 +61,11 @@ library_edit_category:
 library_remove_category:
     path:   /admin/remove/category/{slug}
     defaults: { _controller: LibraryBundle:Default:removeCategory }
+
+library_show_cart:
+    path:   /cart
+    defaults: { _controller: LibraryBundle:Default:showCart}
+
+library_remove_cart:
+    path:   /cart/remove/{slug}
+    defaults: { _controller: LibraryBundle:Default:removeCart }
