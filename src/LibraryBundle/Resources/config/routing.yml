@@ -4,23 +4,23 @@ library_homepage:
 
 library_category:
     path:   /category/{slug}
-    defaults: { _controller: LibraryBundle:Default:category }
+    defaults: { _controller: LibraryBundle:Category:category }
 
 library_book:
     path:   /book/{slug}
-    defaults: { _controller: LibraryBundle:Default:book }
+    defaults: { _controller: LibraryBundle:Book:book }
 
 library_author: 
     path:   /author/{slug}
-    defaults: { _controller: LibraryBundle:Default:author }
+    defaults: { _controller: LibraryBundle:Author:author }
 
 library_news:
     path:    /whatsnew/
     defaults: { _controller: LibraryBundle:Default:news }
 
 library_borrow:
-    path:   /borrow/{slug}
-    defaults: { _controller: LibraryBundle:Default:borrow }
+    path:   /addToCart/{slug}
+    defaults: { _controller: LibraryBundle:Cart:addToCart }
 
 library_admin:
     path: /admin
@@ -28,44 +28,44 @@ library_admin:
 
 library_add_book:
     path:   /admin/add/book
-    defaults: { _controller: LibraryBundle:Default:addBook }
+    defaults: { _controller: LibraryBundle:Book:addBook }
 
 library_edit_book:
     path:   /admin/edit/book/{slug}
-    defaults: { _controller: LibraryBundle:Default:editBook }
+    defaults: { _controller: LibraryBundle:Book:editBook }
 
 library_remove_book:
     path:   /admin/remove/book/{slug}
-    defaults: { _controller: LibraryBundle:Default:removeBook }
+    defaults: { _controller: LibraryBundle:Book:removeBook }
 
 library_add_author:
     path:   /admin/add/author
-    defaults: { _controller: LibraryBundle:Default:addAuthor }
+    defaults: { _controller: LibraryBundle:Author:addAuthor }
 
 library_edit_author:
     path:   /admin/edit/author/{slug}
-    defaults: { _controller: LibraryBundle:Default:editAuthor }
+    defaults: { _controller: LibraryBundle:Author:editAuthor }
 
 library_remove_author:
     path:   /admin/remove/author/{slug}
-    defaults: { _controller: LibraryBundle:Default:removeAuthor }
+    defaults: { _controller: LibraryBundle:Author:removeAuthor }
 
 library_add_category:
     path:   /admin/add/category
-    defaults: { _controller: LibraryBundle:Default:addCategory }
+    defaults: { _controller: LibraryBundle:Category:addCategory }
 
 library_edit_category:
     path:   /admin/edit/category/{slug}
-    defaults: { _controller: LibraryBundle:Default:editCategory }
+    defaults: { _controller: LibraryBundle:Category:editCategory }
 
 library_remove_category:
     path:   /admin/remove/category/{slug}
-    defaults: { _controller: LibraryBundle:Default:removeCategory }
+    defaults: { _controller: LibraryBundle:Category:removeCategory }
 
 library_show_cart:
     path:   /cart
-    defaults: { _controller: LibraryBundle:Default:showCart}
+    defaults: { _controller: LibraryBundle:Cart:showCart}
 
 library_remove_cart:
     path:   /cart/remove/{slug}
-    defaults: { _controller: LibraryBundle:Default:removeCart }
+    defaults: { _controller: LibraryBundle:Cart:removeFromCart }

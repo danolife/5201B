@@ -37,7 +37,7 @@
                     <li class="dropdown {% if app.request.attributes.get('_route') == 'library_category' %} active{% endif %}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            {{ render(controller('LibraryBundle:Default:categories')) }}
+                            {{ render(controller('LibraryBundle:Category:categories')) }}
                         </ul>
                     </li>
                     <li {% if app.request.attributes.get('_route') == 'library_news' %}class="active"{% endif %}>
@@ -87,6 +87,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 {% endblock %}
 </body>
 </html>
