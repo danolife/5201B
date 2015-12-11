@@ -26,6 +26,12 @@ class DefaultController extends Controller
         return $this->render('LibraryBundle:Default:index.html.twig', array('books' => $books));
     }
 
+    public function loansOverviewAction()
+    {
+        $users = $this->get('fos_user.user_manager')->findUsers();
+        return $this->render('LibraryBundle:Default:loansOverview.html.twig', array('users' => $users));
+    }
+
     public function newsAction()
     {
         $em = $this->getDoctrine()->getManager();

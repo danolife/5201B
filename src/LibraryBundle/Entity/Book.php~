@@ -225,70 +225,16 @@ class Book
         return $this->category;
     }
 
-    /**
-     * @return bool
-     */
     public function isBorrowed()
     {
-        foreach ($this->getLoans() as $loan) {
-            if($loan->getOngoing())
-            {
-                return true;
-            }
+        /*$loan = $this->getLoan();
+        if(!isset($loan) || $loan->getOnGoing() != false)
+        {
+            return false;
         }
-        return false;
-    }
-
-    public function getActiveLoan()
-    {
-        foreach ($this->getLoans() as $loan) {
-            if($loan->getOngoing())
-            {
-                return $loan;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->loans = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add loan
-     *
-     * @param \LibraryBundle\Entity\Loan $loan
-     *
-     * @return Book
-     */
-    public function addLoan(\LibraryBundle\Entity\Loan $loan)
-    {
-        $this->loans[] = $loan;
-
-        return $this;
-    }
-
-    /**
-     * Remove loan
-     *
-     * @param \LibraryBundle\Entity\Loan $loan
-     */
-    public function removeLoan(\LibraryBundle\Entity\Loan $loan)
-    {
-        $this->loans->removeElement($loan);
-    }
-
-    /**
-     * Get loans
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLoans()
-    {
-        return $this->loans;
+        else
+        {
+            return true;
+        }*/
     }
 }

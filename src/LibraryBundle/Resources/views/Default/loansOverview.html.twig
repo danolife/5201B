@@ -1,0 +1,58 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row"><span class=""><label><i class="fa fa-filter"></i> Filtrer les noms
+                <input type="text" class="form-control" id="filter"/>
+            </label></span></div>
+    <div class="row">
+    {% for user in users %}
+        {% if loop.first %}
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+        {% endif %}
+
+            <div class="panel panel-default" data-name="{{ user.username }}">
+                <div class="panel-heading" role="tab" id="heading{{ loop.index }}">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
+                            <span class="badge">{{ user.loans.count }}</span> {{ user.username|capitalize }}
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse{{ loop.index }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ loop.index }}">
+                    <div class="list-group">
+                        {% for loan in user.loans %}
+                            <a class="list-group-item" href="{{ path('library_book', {'slug': loan.book.slug}) }}">{{ loan.book.title }}</a>
+                        {% else %}
+                            <a class="list-group-item" href="#">Aucun emprunt</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        {% if loop.last %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $('#filter').on('input',function(){
+                var filterValue = $('#filter').val();
+                $('.panel-default').each(function(){
+                    if($(this).attr('data-name').contains(filterValue))
+                    {
+                        $(this).show();
+                    }
+                    else
+                    {
+                        $(this).hide();
+                    }
+                })
+            })
+
+        });
+    </script>
+{% endblock %}

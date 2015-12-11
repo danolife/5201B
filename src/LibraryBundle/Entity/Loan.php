@@ -30,7 +30,7 @@ class Loan
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="LibraryBundle\Entity\Book", inversedBy="loan")
+     * @ORM\ManyToOne(targetEntity="LibraryBundle\Entity\Book", inversedBy="loans")
      * @ORM\JoinColumn(nullable=false)
      */
     private $book;

@@ -30,7 +30,7 @@
 					<a href="{{ path('library_borrow', {'slug': book.slug}) }}" class="btn btn-primary"><i class="fa fa-cart-plus"></i> Ajouter au panier</a>
 				{% elseif role_user and bookInCart %}
 					Ce livre se trouve déjà dans votre panier
-				{% elseif book.borrowed and book.loan.user != app.user %}
+				{% elseif book.borrowed and book.activeLoan.user != app.user %}
 					Ce livre est déjà emprunté
 				{% elseif book.borrowed %}
 					Vous avez un emprunt en cours pour ce livre
