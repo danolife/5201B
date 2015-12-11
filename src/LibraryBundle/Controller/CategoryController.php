@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $category = $repo->findOneBySlug($slug);
         $books = $category->getBooks();
 
-        return $this->render('LibraryBundle:Default:category.html.twig', array('category' => $category, 'books' => $books));
+        return $this->render('LibraryBundle:Category:category.html.twig', array('category' => $category, 'books' => $books));
     }
 
     public function editCategoryAction(Request $request, $slug)
@@ -36,7 +36,7 @@ class CategoryController extends Controller
             return $this->redirect($this->generateUrl('library_category', array('slug'=>$category->getSlug())));
         }
 
-        return $this->render('LibraryBundle:Default:addCategory.html.twig', array('form'=>$form->createView()));
+        return $this->render('LibraryBundle:Category:addCategory.html.twig', array('form'=>$form->createView()));
     }
 
     public function removeCategoryAction($slug)
@@ -65,7 +65,7 @@ class CategoryController extends Controller
             return $this->redirect($this->generateUrl('library_category', array('slug'=>$category->getSlug())));
         }
 
-        return $this->render('LibraryBundle:Default:addCategory.html.twig', array('form'=>$form->createView()));
+        return $this->render('LibraryBundle:Category:addCategory.html.twig', array('form'=>$form->createView()));
     }
 
     // liste les categories dans le menu
@@ -75,6 +75,6 @@ class CategoryController extends Controller
         $repo = $em->getRepository("LibraryBundle:Category");
         $categories = $repo->findAll();
 
-        return $this->render('LibraryBundle:Default:categories.html.twig', array('categories' => $categories));
+        return $this->render('LibraryBundle:Category:categories.html.twig', array('categories' => $categories));
     }
 }

@@ -20,7 +20,7 @@ class BookController extends Controller
         {
             $bookInCart = true;
         }
-        return $this->render('LibraryBundle:Default:book.html.twig', array('book' => $book, 'bookInCart' => $bookInCart));
+        return $this->render('LibraryBundle:Book:book.html.twig', array('book' => $book, 'bookInCart' => $bookInCart));
     }
 
     public function editBookAction(Request $request, $slug)
@@ -40,7 +40,7 @@ class BookController extends Controller
             return $this->redirect($this->generateUrl('library_book', array('slug'=>$book->getSlug())));
         }
 
-        return $this->render('LibraryBundle:Default:addBook.html.twig', array('form'=>$form->createView()));
+        return $this->render('LibraryBundle:Book:addBook.html.twig', array('form'=>$form->createView()));
     }
 
     public function removeBookAction(Request $request, $slug)
@@ -62,7 +62,7 @@ class BookController extends Controller
             return $this->redirectToRoute('library_homepage');
         }
 
-        return $this->render('LibraryBundle:Default:removeBook.html.twig', array('slug' => $slug, 'form' => $form->createView()));
+        return $this->render('LibraryBundle:Book:removeBook.html.twig', array('slug' => $slug, 'form' => $form->createView()));
     }
 
     public function addBookAction(Request $request)
@@ -80,6 +80,6 @@ class BookController extends Controller
             return $this->redirect($this->generateUrl('library_book', array('slug'=>$book->getSlug())));
         }
 
-        return $this->render('LibraryBundle:Default:addBook.html.twig', array('form'=>$form->createView()));
+        return $this->render('LibraryBundle:Book:addBook.html.twig', array('form'=>$form->createView()));
     }
 }

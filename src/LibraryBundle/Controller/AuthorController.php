@@ -15,7 +15,7 @@ class AuthorController extends Controller
         $author = $repo->findOneBySlug($slug);
         $books = $author->getBooks();
 
-        return $this->render('LibraryBundle:Default:author.html.twig', array('author' => $author, 'books' => $books));
+        return $this->render('LibraryBundle:Author:author.html.twig', array('author' => $author, 'books' => $books));
     }
 
     public function addAuthorAction(Request $request)
@@ -33,7 +33,7 @@ class AuthorController extends Controller
             return $this->redirect($this->generateUrl('library_author', array('slug'=>$author->getSlug())));
         }
 
-        return $this->render('LibraryBundle:Default:addAuthor.html.twig', array('form'=>$form->createView()));
+        return $this->render('LibraryBundle:Author:addAuthor.html.twig', array('form'=>$form->createView()));
     }
 
     public function editAuthorAction(Request $request, $slug)
@@ -53,7 +53,7 @@ class AuthorController extends Controller
             return $this->redirect($this->generateUrl('library_author', array('slug'=>$author->getSlug())));
         }
 
-        return $this->render('LibraryBundle:Default:addAuthor.html.twig', array('form'=>$form->createView()));
+        return $this->render('LibraryBundle:Author:addAuthor.html.twig', array('form'=>$form->createView()));
     }
 
     public function removeAuthorAction(Request $request, $slug)
@@ -73,6 +73,6 @@ class AuthorController extends Controller
             return $this->redirectToRoute('library_homepage');
         }
 
-        return $this->render('LibraryBundle:Default:removeAuthor.html.twig', array('slug' => $slug, 'form' => $form->createView()));
+        return $this->render('LibraryBundle:Author:removeAuthor.html.twig', array('slug' => $slug, 'form' => $form->createView()));
     }
 }

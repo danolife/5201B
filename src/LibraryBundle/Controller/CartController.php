@@ -24,7 +24,7 @@ class CartController extends Controller
             $book = $repo->findOneBySlug($slug);
             $books[] = $book;
         }
-        return $this->render('LibraryBundle:Default:showCart.html.twig', array('books' => $books));
+        return $this->render('LibraryBundle:Cart:showCart.html.twig', array('books' => $books));
     }
 
     public function addToCartAction($slug)
