@@ -4,8 +4,13 @@
     <h3><i class="fa fa-shopping-cart"></i> Mon panier</h3>
 
     {% for book in books %}
+        {% if loop.last %}
+            <div class="well">
+            <div class="container">
+
+        {% endif %}
         <div class="col-md-3">
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         <a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> {% if book.isNew == 1 %}<span class="label label-warning"><i class="fa fa-star"></i> New</span>{% endif %}
@@ -19,10 +24,18 @@
                 </div>
             </div>
         </div>
+        {% if loop.last %}
+            {#<div style="clear: both"></div>#}
+
+            </div>
+            </div>
+            <a class="btn btn-primary btn-block" href="#"><i class="fa fa-check"></i> Passer commande</a>
+        {% endif %}
     {% else %}
         <div class="jumbotron">
             <h1><i class="fa fa-meh-o"></i> Votre panier est vide...</h1>
             <p><a class="btn btn-primary btn-lg" href="{{ path('library_homepage') }}" role="button"><i class="fa fa-home"></i> Retour à l'accueil</a></p>
         </div>
     {% endfor %}
+
 {% endblock %}
