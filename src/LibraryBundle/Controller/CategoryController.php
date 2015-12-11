@@ -6,6 +6,7 @@ use LibraryBundle\Entity\Category;
 use LibraryBundle\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CategoryController extends Controller
 {
@@ -39,15 +40,24 @@ class CategoryController extends Controller
         return $this->render('LibraryBundle:Category:addCategory.html.twig', array('form'=>$form->createView()));
     }
 
-    public function removeCategoryAction($slug)
+    public function removeCategoryAction(Request $request, $slug)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository("LibraryBundle:Category");
         $category = $repo->findOneBySlug($slug);
-        $em->remove($category);
-        $em->flush();
 
-        return $this->redirectToRoute('library_homepage');
+        if (null === $category) {
+            throw new NotFoundHttpException("Cette catégorie n'existe pas");
+        }
+
+        $form = $this->createFormBuilder()->getForm();
+        if ($form->handleRequest($request)->isValid()) {
+            $em->remove($category);
+            $em->flush();
+            return $this->redirectToRoute('library_homepage');
+        }
+
+        return $this->render('LibraryBundle:Category:removeCategory.html.twig', array('slug' => $slug, 'form' => $form->createView()));
     }
 
     public function addCategoryAction(Request $request)
