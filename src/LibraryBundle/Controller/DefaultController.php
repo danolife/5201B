@@ -51,4 +51,15 @@ class DefaultController extends Controller
         return $this->render('LibraryBundle:Default:userManager.html.twig', array('users' => $users));
     }
 
+    public function userChangeStatusAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository("UserBundle:User")->findOneById($id);
+
+        $user->setEnabled(1-$user->isEnabled());
+        $em->flush();
+
+        return $this->redirectToRoute('library_user_manager');
+    }
+
 }

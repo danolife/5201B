@@ -86,3 +86,6 @@ library_user_manager:
     path:   /admin/users
     defaults: { _controller: LibraryBundle:Default:userManager}
 
+library_user_change_status:
+    path:   /admin/changestatus/{id}
+    defaults: { _controller: LibraryBundle:Default:userChangeStatus}

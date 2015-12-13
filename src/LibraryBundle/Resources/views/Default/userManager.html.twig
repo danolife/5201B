@@ -12,11 +12,11 @@
             {% if loop.first %}
                 <table class="table table-striped table-hover table-bordered">
                     <tr>
-                        <th>Username</th>
+                        <th>Nom d'utilisateur</th>
                         <th>Email</th>
-                        <th>Last login</th>
+                        <th>Dernière connexion</th>
                         <th>Role(s)</th>
-                        {#<th>Delete</th>#}
+                        <th>Statut</th>
                     </tr>
             {% endif %}
 
@@ -29,7 +29,7 @@
                         {{ role }}{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </td>
-                {#<td></td>#}
+                <td class="text-center"><a href="{{ path('library_user_change_status', {'id': user.id}) }}" data-toggle="tooltip" data-placement="top" {% if user.enabled %}title="Désactiver"><button class="btn btn-sm btn-success">Actif</button>{% else %}title="Activer"><button class="btn btn-sm btn-danger">Désactivé</button>{% endif %}</a></td>
             </tr>
 
             {% if loop.last %}
