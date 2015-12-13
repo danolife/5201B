@@ -2,6 +2,8 @@
 
 namespace LibraryBundle\Controller;
 
+use LibraryBundle\Entity\Author;
+use LibraryBundle\Form\AuthorType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;

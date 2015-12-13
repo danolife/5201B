@@ -4,11 +4,16 @@
 
     <div class="jumbotron">
         <h1>Espace admin</h1>
-        <p>Bienvenue dans votre espace administrateur !</p>
+        <h3>Bienvenue dans votre espace administrateur !</h3>
+        <p>Gestion du contenu</p>
         <p>
             <a class="btn btn-primary btn-lg" href="{{ path('library_add_book') }}"><i class="fa fa-book"></i> Ajouter un livre</a>
             <a class="btn btn-primary btn-lg" href="{{ path('library_add_author') }}"><i class="fa fa-user"></i> Ajouter un auteur</a>
             <a class="btn btn-primary btn-lg" href="{{ path('library_add_category') }}"><i class="fa fa-list"></i> Ajouter une catégorie</a>
+        </p>
+        <p>Gestion des utilisateurs</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="#"><i class="fa fa-user-plus"></i> Nouvel utilisateur</a>
             <a class="btn btn-primary btn-lg" href="{{ path('library_loans_overview') }}"><i class="fa fa-info-circle"></i> Suivi des prêts</a>
         </p>
     </div>
