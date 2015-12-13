@@ -46,4 +46,9 @@ class DefaultController extends Controller
         return $this->render('LibraryBundle:Default:admin.html.twig');
     }
 
+    public function userManagerAction(){
+        $users = $this->get('fos_user.user_manager')->findUsers();
+        return $this->render('LibraryBundle:Default:userManager.html.twig', array('users' => $users));
+    }
+
 }

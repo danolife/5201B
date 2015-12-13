@@ -55,7 +55,7 @@ class RegistrationController extends BaseController
 
             $userManager->updateUser($user);
 
-            return $this->redirectToRoute('library_admin');
+            return $this->redirectToRoute('library_user_manager');
         }
 
         return $this->render('FOSUserBundle:Registration:register.html.twig', array(

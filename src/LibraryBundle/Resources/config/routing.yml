@@ -81,3 +81,8 @@ library_return:
 library_loans_overview:
     path:   /admin/loans
     defaults: { _controller: LibraryBundle:Default:loansOverview}
+
+library_user_manager:
+    path:   /admin/users
+    defaults: { _controller: LibraryBundle:Default:userManager}
+

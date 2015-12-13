@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <span class=""><label><i class="fa fa-filter"></i> Filtrer les noms
+                <input type="text" class="form-control" id="filter"/>
+            </label>
+        </span>
+    </div>
+    <div class="row">
+        {% for user in users %}
+            {% if loop.first %}
+                <table class="table table-striped table-hover table-bordered">
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Last login</th>
+                        <th>Role(s)</th>
+                        {#<th>Delete</th>#}
+                    </tr>
+            {% endif %}
+
+            <tr class="line" data-username="{{ user.username }}">
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.lastLogin  | date("d/m/Y")}}</td>
+                <td>
+                    {% for role in user.roles %}
+                        {{ role }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                {#<td></td>#}
+            </tr>
+
+            {% if loop.last %}
+                </table>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function(){
+            $('#filter').on('input',function(){
+                var filterValue = $('#filter').val();
+                $('.line').each(function(){
+                    if($(this).attr('data-username').contains(filterValue))
+                    {
+                        $(this).show();
+                    }
+                    else
+                    {
+                        $(this).hide();
+                    }
+                })
+            })
+
+        });
+    </script>
+{% endblock %}
