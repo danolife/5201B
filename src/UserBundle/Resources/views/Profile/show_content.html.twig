@@ -4,6 +4,7 @@
     <h1>Profil de l'utilisateur</h1>
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <a href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe</a>
     <h3>Tous mes prêts</h3>
     {% for loan in user.loans|reverse %}
         {% if loop.first %}
