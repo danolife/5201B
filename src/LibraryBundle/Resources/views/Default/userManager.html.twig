@@ -26,7 +26,7 @@
                 <td>{{ user.lastLogin  | date("d/m/Y")}}</td>
                 <td>
                     {% for role in user.roles %}
-                        {{ role }}{% if not loop.last %}, {% endif %}
+                        {{ role | replace({'ROLE_': ''}) | replace({'_': ' '}) | capitalize }}{% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </td>
                 <td class="text-center"><a href="{{ path('library_user_change_status', {'id': user.id}) }}" data-toggle="tooltip" data-placement="top" {% if user.enabled %}title="Désactiver"><button class="btn btn-sm btn-success">Actif</button>{% else %}title="Activer"><button class="btn btn-sm btn-danger">Désactivé</button>{% endif %}</a></td>
