@@ -21,7 +21,14 @@
                 <div id="collapse{{ loop.index }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ loop.index }}">
                     <div class="list-group">
                         {% for loan in user.loans %}
-                            <a class="list-group-item {% if loan.late %}list-group-item-danger{% endif %}" href="{{ path('library_book', {'slug': loan.book.slug}) }}">{{ loan.book.title }}</a>
+                            <a class="list-group-item {% if loan.late %}list-group-item-danger{% endif %}" href="{{ path('library_book', {'slug': loan.book.slug}) }}">
+                                <h4 class="list-group-item-heading">
+                                    {{ loan.book.title }}
+                                </h4>
+                                <p class="list-group-item-text">
+                                    Emprunté le {{ loan.startDate | date('d/m/Y') }}
+                                </p>
+                            </a>
                         {% else %}
                             <a class="list-group-item" href="#">Aucun emprunt</a>
                         {% endfor %}

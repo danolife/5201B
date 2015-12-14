@@ -20,7 +20,7 @@
             <td><a href="{{ path('library_book', {'slug': loan.book.slug}) }}">{{ loan.book.title }}</a></td>
             <td>{{ loan.startDate | date("d/m/Y") }}</td>
             <td>{% if loan.onGoing  %} <span class="label label-danger">Non</span>{% else %} <span class="label label-success">Oui</span>{% endif %}</td>
-            <td><a href="{{ path('library_return', {'slug': loan.book.slug}) }}" class="btn btn-primary {% if not loan.onGoing  %}disabled{% endif %}"><i class="fa fa-level-down"></i> Rendre</a></td>
+            <td class="text-center"><a href="{{ path('library_return', {'slug': loan.book.slug}) }}" class="btn btn-sm btn-primary {% if not loan.onGoing  %}disabled{% endif %}"><i class="fa fa-level-down"></i> Rendre</a></td>
         </tr>
         {% if loop.last %}
             </table>
