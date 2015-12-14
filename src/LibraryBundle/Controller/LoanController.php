@@ -30,7 +30,11 @@ class LoanController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $bookRepo = $em->getRepository('LibraryBundle:Book');
         $book = $bookRepo->findOneBySlug($slug);
-        $book->getActiveLoan()->setOnGoing(false);
+        if($book->isBorrowed() && $book->getActiveLoan()->getUser() == $this->getUser())
+        {
+            $book->getActiveLoan()->setOnGoing(false);
+        }
+
         $em->flush();
 
         return $this->redirectToRoute('fos_user_profile_show');

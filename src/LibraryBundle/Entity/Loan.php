@@ -153,4 +153,11 @@ class Loan
     {
         return $this->onGoing;
     }
+
+    public function isLate()
+    {
+        $late = new \DateTime() > ($this->getStartDate()->add(new \DateInterval('P3D')));
+
+        return ($this->getOnGoing() && $late);
+    }
 }
