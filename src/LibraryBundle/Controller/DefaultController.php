@@ -55,9 +55,12 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository("UserBundle:User")->findOneById($id);
+        if(!$user->hasRole('ROLE_ADMIN'))
+        {
+            $user->setEnabled(1-$user->isEnabled());
+            $em->flush();
+        }
 
-        $user->setEnabled(1-$user->isEnabled());
-        $em->flush();
 
         return $this->redirectToRoute('library_user_manager');
     }
