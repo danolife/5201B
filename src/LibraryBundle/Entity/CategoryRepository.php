@@ -10,4 +10,15 @@ namespace LibraryBundle\Entity;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLike($text)
+    {
+        $queryBuilder = $this->createQueryBuilder('category')
+            ->where("category.name LIKE :text")
+            ->setParameter('text','%'.$text.'%')
+        ;
+
+
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    {{ form(form) }}
+    {% if not formSubmitted %}
+        <div class="well">
+            <h1><i class="fa fa-search"></i> Lancez une recherche</h1>
+        </div>
+    {% elseif not resultFound %}
+        <div class="well">
+            <h1><i class="fa fa-meh-o"></i> Votre recherche n'a rien donné</h1>
+        </div>
+    {% endif %}
+    {% for book in resultBook %}
+        {% if loop.first %}
+            <div class="well">
+            <h2><i class="fa fa-book"></i> Résultats de livres</h2>
+            <div class="container">
+        {% endif %}
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href="{{ path('library_book', {'slug': book.slug}) }}">{{ book.title }}</a> {% if book.isNew == 1 %}<span class="label label-warning"><i class="fa fa-star"></i> New</span>{% endif %}</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li>Categorie : <a href="{{ path('library_category', {'slug': book.category.slug}) }}">{{ book.category.name }}</a></li>
+                        <li>Auteur : <a href="{{ path('library_author', {'slug': book.author.slug}) }}">{{ book.author.name }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% if loop.last %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% for author in resultAuthor %}
+        {% if loop.first %}
+            <div class="well">
+            <h2><i class="fa fa-user"></i> Résultats d'auteurs</h2>
+            <div class="container">
+        {% endif %}
+        <div class="col-md-3">
+            <a href="{{ path('library_author', {'slug' : author.slug}) }}" class="btn btn-primary btn-block">{{ author.name }}</a>
+        </div>
+        {% if loop.last %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% for category in resultCategory %}
+        {% if loop.first %}
+            <div class="well">
+            <h2><i class="fa fa-list"></i> Résultats de catégories</h2>
+            <div class="container">
+        {% endif %}
+        <div class="col-md-3">
+            <a href="{{ path('library_category', {'slug' : category.slug}) }}" class="btn btn-primary btn-block">{{ category.name }}</a>
+        </div>
+        {% if loop.last %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+

@@ -43,6 +43,9 @@
                     <li {% if app.request.attributes.get('_route') == 'library_news' %}class="active"{% endif %}>
                         <a href="{{ path('library_news') }}">Nouveautés</a>
                     </li>
+                    <li {% if app.request.attributes.get('_route') == 'library_search' %}class="active"{% endif %}>
+                        <a href="{{ path('library_search') }}">Rechercher</a>
+                    </li>
                 </ul>
                 {% if app.session.get('cart') and app.session.get('cart').size > 0 %}
 

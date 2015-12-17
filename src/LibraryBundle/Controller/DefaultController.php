@@ -2,6 +2,7 @@
 
 namespace LibraryBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use LibraryBundle\Entity\Cart;
 use LibraryBundle\Entity\Category;
 use LibraryBundle\Entity\Author;
@@ -39,6 +40,49 @@ class DefaultController extends Controller
         $books = $repo->findByIsNew(1);
 
         return $this->render('LibraryBundle:Default:nouveautes.html.twig', array('books' => $books));
+    }
+
+    public function searchAction(Request $request)
+    {
+        $form = $this->createFormBuilder()->getForm();
+        $form->add('recherche', 'text')
+            ->add('livre','checkbox', array('required' => false))
+            ->add('categorie', 'checkbox', array('required' => false))
+            ->add('auteur', 'checkbox', array('required' => false))
+            ->add('valider', 'submit');
+
+        $resultBook = array();
+        $resultCategory = array();
+        $resultAuthor = array();
+        if ($form->handleRequest($request)->isValid()) {
+            $text = $form->get('recherche')->getData();
+            $em = $this->getDoctrine()->getEntityManager();
+            if($form->get('livre')->getData())
+            {
+                $bookRepo = $em->getRepository('LibraryBundle:Book');
+                $resultBook = $bookRepo->findLike($text);
+            }
+            if($form->get('categorie')->getData())
+            {
+                $categoryRepo = $em->getRepository('LibraryBundle:Category');
+                $resultCategory = $categoryRepo->findLike($text);
+            }
+            if($form->get('auteur')->getData())
+            {
+                $authorRepo = $em->getRepository('LibraryBundle:Author');
+                $resultAuthor = $authorRepo->findLike($text);
+            }
+        }
+
+        $resultFound = (count($resultBook)>0 || count($resultAuthor)>0 || count($resultCategory) > 0);
+
+        return $this->render('LibraryBundle:Default:search.html.twig', array(
+            'form' => $form->createView(),
+            'resultFound' => $resultFound,
+            'resultCategory' => $resultCategory,
+            'resultBook' => $resultBook,
+            'resultAuthor' => $resultAuthor,
+            'formSubmitted' => $request->isMethod('POST')));
     }
 
     public function adminAction()

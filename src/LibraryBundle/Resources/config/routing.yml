@@ -89,3 +89,7 @@ library_user_manager:
 library_user_change_status:
     path:   /admin/changestatus/{id}
     defaults: { _controller: LibraryBundle:Default:userChangeStatus}
+
+library_search:
+    path:   /search
+    defaults: { _controller: LibraryBundle:Default:search}

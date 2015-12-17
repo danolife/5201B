@@ -10,4 +10,15 @@ namespace LibraryBundle\Entity;
  */
 class BookRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLike($text)
+    {
+        $queryBuilder = $this->createQueryBuilder('book')
+            ->where("book.title LIKE :text")
+            ->setParameter('text','%'.$text.'%')
+        ;
+
+
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
