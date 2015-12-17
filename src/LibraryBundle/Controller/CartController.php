@@ -38,7 +38,14 @@ class CartController extends Controller
         {
             $cart = $this->get('session')->get('cart');
         }
-        $cart->addBook($slug);
+        if(($this->getUser()->getActiveLoansCount() + $cart->getSize()) < 3)
+        {
+            $cart->addBook($slug);
+        }
+        else
+        {
+            $this->get('session')->getFlashBag()->add('error','Vous ne pouvez pas emprunter plus de 3 livres simultanément');
+        }
         return $this->redirectToRoute('library_book', array('slug' => $slug));
     }
 

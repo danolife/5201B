@@ -71,4 +71,16 @@ class User extends BaseUser
     {
         return $this->loans;
     }
+
+    public function getActiveLoansCount()
+    {
+        $i = 0;
+        foreach ($this->getLoans() as $loan) {
+            if($loan->getOnGoing())
+            {
+                $i++;
+            }
+        }
+        return $i;
+    }
 }

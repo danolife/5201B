@@ -78,6 +78,9 @@
     </nav>
 {% endblock %}
 <div class="container">
+    {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger" role="alert">{{ flashMessage }}</div>
+    {% endfor %}
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             {% block body %}
